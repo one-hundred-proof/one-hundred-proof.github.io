@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Fri 30 Dec 2022" />
+  <title>Not enough eyeballs in the world</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="../css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Not enough eyeballs in the world</h1>
+<p class="author">Fri 30 Dec 2022</p>
+</header>
+<p>In 2016 I excitedly joined a small Bitcoin exchange to flex my nacent
+cryptocurrency knowledge and hopefully learn some more. One of the other
+employees, let’s call him Harry, was really keen to tell me more about
+Ethereum, and this magical new “smart contract” called The DAO.</p>
+<p>Even then I had enough background in Computer Science that when he
+dropped the term <em>turing-complete</em> I gave a moment’s pause.</p>
+<p>I remember thinking that sounded pretty dangerous. A little known
+fact, even among cryptocurrency enthusiasts, is that every Bitcoin
+transaction actually contains a small program written in a language
+called Bitcoin Script. It’s use cases are limited to verifying
+signatures (including transactions with signatures from multiple
+parties) and time locking funds. Bitcoin Script is hobbled in a very
+important way. In fact, it was designed that way on purpose.</p>
+<p>That sounds pretty counter-intuitive, but there’s a good reason for
+it. Bitcoin Script is a non-turing-complete language. There are
+advantages that come with this. Programs written in such a language are
+<em>way</em> easier to prove correct, since by definition they can’t
+compute all computable things. Since, in some sense, proving things
+correct involves making some mathematical argument about a collosal
+number of mathematical entities, the fact that the language can’t
+express as much has the benefit of making things <em>way easier</em> to
+prove. In this sense a non-turing-complete language’s limited
+expressiveness is its strength.</p>
+<p>Ethereum was explicitly designed <em>around</em> a turing-complete
+smart contract language. Simple, non-expressive languages are great for
+correctness, but you can’t build a thriving ecosystem of interesting
+financial instruments, games, governance strutures (and so on) without a
+fully expressive programming language. Ethereum was meant to push the
+boundaries of what a cryptocurrency could be. It delivered on this
+promise almost immediately. Wheras Bitcoin was really limited to only
+multi-sig transactions and timelocks with Bitcoin Script, Ethereum
+bloomed with smart contracts defining new tokens (which developed their
+own independent value) and decentralised organisation contracts that
+provided a means by which projects could be proposed, voted on, and
+funded.</p>
+<p>These advantages came with an obvious, and weighty, downside – one
+that I could only see that early on because of my luck in attending a
+university that taught <em>formal verification</em> and an unorthodox
+career choice to work on formally verifying an operating system
+micro-kernel. Although I knew next to nothing about <a
+href="https://docs.soliditylang.org">Solidity</a>, my background told me
+that I should be worried. Solidity would allow any user, of any skill
+level, to write programs that might conceivably end up containing
+hundreds of thousands or even millions of dollars of value inside them.
+And yet, it was Ethereum’s stated goal that these funds would not be
+controlled by the whims of human beings, only code.</p>
+<p>then it’s of paramount importance that they be correct. Given the
+sheer amount of wealth, even at 2016 exchange rates, sloshing around in
+the Ethereum blockchain it was conceivable that some of these smart
+contracts might end up with hundreds of thousands or even millions of
+dollars of value inside them and yet be vulnerable to simplest of</p>
+<p>What I didn’t expect was the rapidity with which this happened. When
+Harry told me that The DAO had over $60M of ETH in it, I was loathe to
+believe it. *I tried to tell Harry that I thought there was a good
+chance it could get hacked but, at the time, I don’t think he’d even
+heard the term turing-complete and telling him “that sounds dangerous”
+was much like telling a toddler that trucks – the same things that make
+him squeal with delight as they rumble on by – can maim and kill.</p>
+<p>Two weeks later <a
+href="https://www.geeksforgeeks.org/what-was-the-dao-hack/">the DAO
+hack</a> happened sending the entire Ethereum community into chaos,
+leading to serious debates about whether “code is law” could be taken
+seriously, and eventually resulting in a hard fork that split Ethereum
+forever in twain, into Ethereum and <a
+href="https://ethereumclassic.org/">Ethereum Classic</a>.</p>
+<p>I walked into work the day after it happened feeling like
+Nostradamus. The other employees seemed to think that I was in posession
+of some kind of secret knowledge but the story was far more prosaic than
+that. A few</p>
+<hr />
+<p>Notes:</p>
+<ul>
+<li><a
+href="https://engineering.skroutz.gr/blog/uncovering-a-24-year-old-bug-in-the-linux-kernel/">Uncovering
+a 24 year old bug in the Linux Kernel</a></li>
+</ul>
+</body>
+</html>
