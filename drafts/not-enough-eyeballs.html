@@ -29,7 +29,7 @@
 cryptocurrency knowledge and hopefully learn some more. One of the other
 employees, let’s call him Harry, was really keen to tell me more about
 Ethereum, and this magical new “smart contract” called The DAO.</p>
-<p>Even then I had enough background in Computer Science that when he
+<p>Even then, I had enough background in Computer Science that when he
 dropped the term <em>turing-complete</em> I gave a moment’s pause.</p>
 <p>I remember thinking that sounded pretty dangerous. A little known
 fact, even among cryptocurrency enthusiasts, is that every Bitcoin
@@ -67,40 +67,102 @@ career choice to work on formally verifying an operating system
 micro-kernel. Although I knew next to nothing about <a
 href="https://docs.soliditylang.org">Solidity</a>, my background told me
 that I should be worried. Solidity would allow any user, of any skill
-level, to write programs that might conceivably end up containing
-hundreds of thousands or even millions of dollars of value inside them.
-And yet, it was Ethereum’s stated goal that these funds would not be
-controlled by the whims of human beings, only code.</p>
+level, to write programs that might conceivably end up containing very
+large sums of money inside them. And yet, it was Ethereum’s stated goal
+that the flow of these funds would not be directed by the whims of human
+beings, only code.</p>
 <p>Because of this, it’s of paramount importance that they be correct.
 Given the sheer amount of wealth, even at 2016 exchange rates, sloshing
 around in the Ethereum blockchain it was conceivable that some of these
 smart contracts might end up with hundreds of thousands or even millions
-of dollars of value inside them and yet be vulnerable to simplest of</p>
+of dollars of value inside them and yet be vulnerable to very simple
+logic bugs.</p>
 <p>What I didn’t expect was the rapidity with which this happened. When
 Harry told me that The DAO had over $60M of ETH in it, I was loathe to
-believe it. *I tried to tell Harry that I thought there was a good
-chance it could get hacked but, at the time, I don’t think he’d even
-heard the term turing-complete and telling him “that sounds dangerous”
-was much like telling a toddler that trucks – the same things that make
-him squeal with delight as they rumble on by – can maim and kill.</p>
+believe it. I tried to tell Harry that I thought there was a good chance
+it could get hacked but, at the time, I don’t think he’d even heard the
+term turing-complete and telling him “that sounds dangerous” was much
+like telling a toddler going through their “I love trucks” phase that
+they can also maim and kill.</p>
 <p>Two weeks later <a
 href="https://www.geeksforgeeks.org/what-was-the-dao-hack/">the DAO
-hack</a> occurred, sent the entire Ethereum community into chaos, and
-led to serious debates about whether “code is law” could be taken
+hack</a> occurred and sent the entire Ethereum community into chaos,
+which led to serious debates about whether “code is law” could be taken
 seriously, and eventually resulted in a hard fork that split Ethereum
-forever in twain, into Ethereum and <a
+forever in twain: into Ethereum and <a
 href="https://ethereumclassic.org/">Ethereum Classic</a>.</p>
 <p>I walked into work the day after it happened feeling like
 Nostradamus. The other employees seemed to think that I was in posession
 of some kind of secret knowledge but the story was far more prosaic than
-that. A few</p>
-<p>[TODO]</p>
-<hr />
-<p>Notes:</p>
+that. I was simply familiar with the fact that programming langauges
+with great expressive power are also far more vunerable to error.
+Paraphrasing Stan Lee you could say <em>with great expressive power
+comes great vulnerablity</em>.</p>
+<p>The DAO hack kindled a burning question within me. Could <a
+href="https://en.wikipedia.org/wiki/Formal_methods">formal methods</a>
+help with the process of writing correct software? My gut told me – and
+still tells me – yes. But I didn’t (and don’t) know for sure. I set out
+to answer this question in late 2016. Unfortunately, I got side-tracked
+for five years working in the “blockchains for traditional finance”
+world for a new company in that space. Notionally, I was hired to work
+on formal verification of financial software but, like so many
+start-ups, the organisation found did not have the discipline to use my
+skills in the role they had advertised. Much more pressing business
+opportunities had sprung up and I was reassigned to work on them. During
+this period of my life I barely kept abreast of what was going on in
+Ethereum.</p>
+<p>It was only in March 2022 of this year that I finally returned to the
+question of whether formal methods could be used to make smart contracts
+less hackable. A lot had changed in Ethereum during my hiatus but what
+had not changed, in fact had only got worse, was the number and severity
+of the hacks on the Ethereum blockchain (and other EVM-based
+blockchains). To be fair, this was partially due the maturity of the
+ecosystem. Decentralised Finance (DeFi) projects had blossomed during my
+absence and were providing real utility to large numbers of users. Put
+simply, the attack surface was larger.</p>
+<p>However, the vulnerabilities which led to some of the hacks were
+still of a very <em>trivial</em> nature. The logic errors which led to
+the loss of funds were not particularly subtle and revealed fuzzy
+thinking and a lack of rigour. On the positive side, the
+<em>auditing</em> and <em>bug bounty</em> ecosystem had matured. Both
+activities had prevented multi-million dollar hacks. In the case of
+bounty hunting the dollar amounts were even quantifiable since
+executable <em>proofs of concept</em> could demonstrate just how much
+money had been at risk.</p>
+<p>But in my opinion, the use of formal methods is still in its infancy,
+not only in the cryptocurrency space, but also in the wider field of
+software engineering in general. One of the most common arguments
+against the use of formal methods is that is that it costs too much,
+both in time and money. To formally verify even a small codebase takes a
+significant amount of skill and a lot of time. These two factors
+translate into significant monetary costs.</p>
+<p>Given that the downsides of logic errors in smart contracts are so
+huge, the cost-benefit analysis seems to clearly come out in favour of
+using formal methods. The caveat is that this is only true <em>if they
+are proven to be effective</em>. Although I’m loathe to admit it, I’m
+not sure that their effectiveness has been conclusively demonstrated yet
+I strongly believe that it is worth trying.</p>
+<p>We now have all the background necessary for me to explain my goals
+and overall strategy. Over the years, I’ve come to highly value the
+concept of <a href="https://en.wikipedia.org/wiki/Tacit_knowledge">tacit
+knowledge</a>. Tacit knowledge is that knowledge that is hard to codify
+or express and hard to pass onto others via written or verbal
+communication. Many <em>physical</em> skills have a high degree of tacit
+knowledge. You might pick up a tip or two from reading a book about how
+to ski, but you’ll only really master the skill through vast amounts of
+practice.</p>
+<p>If I’m to make any progress in <em>preventing</em> hacks then I need
+to know, tacitly, how hacking is done. I need to get inside the mind of
+the hacker by becoming one myself. Only then can I evaluate whether
+formal methods are a useful tool in fending off attacks.</p>
 <ul>
-<li><a
-href="https://engineering.skroutz.gr/blog/uncovering-a-24-year-old-bug-in-the-linux-kernel/">Uncovering
-a 24 year old bug in the Linux Kernel</a></li>
+<li>C4</li>
+<li>Immunefi</li>
+<li>lucrative</li>
+<li>amazing scene. so much fund</li>
+<li>self funding</li>
+<li>no longer want to be employed. Want to collaborate without my
+survival being tied up in it.</li>
 </ul>
 </body>
 </html>
