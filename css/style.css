@@ -7,7 +7,8 @@ html {
 }
 
 body {
-  font-family: Helvetica;
+  font-family: Source Sans Pro, Helvetica;
+  font-weight: 400;
   font-size: 13pt;
   margin: auto;
   max-width: 80ch;
@@ -18,21 +19,28 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
     color: #3070a0;
+}
+
+h1 {
+    font-size: 3em;
 }
 
 p {
   color: #333333;
-  line-height: 1.3;
+  line-height: 1.3em;
 }
 
 .author {
-  font-weight: bold;
+  font-size: 2em;
+  font-weight: 300;
   color: #4080b0;
 }
 
 .date {
-  font-weight: bold;
+  font-size: 2em;
+  font-weight: 300;
   color: #4080b0;
 }
 
