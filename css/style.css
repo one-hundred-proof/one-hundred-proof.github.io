@@ -65,3 +65,11 @@ div.sourceCode {
     background-color: #EEEEFF;
     font-size: 10pt;
 }
+
+a:link {
+  color: #3070a0;
+}
+
+a:visited {
+  color: #3070a0;
+}

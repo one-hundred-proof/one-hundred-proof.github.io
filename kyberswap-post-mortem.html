@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Tue 23 May 2023" />
+  <title>Saving $100M at risk in KyberSwap Elastic</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,700">
+  <link rel="stylesheet" href="./css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9E4B6L743K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9E4B6L743K');
+</script>
+<body>
+<header id="title-block-header">
+<h1 class="title">Saving $100M at risk in KyberSwap Elastic</h1>
+<p class="author">Tue 23 May 2023</p>
+</header>
+<p><img src="assets/kyberswap-post-mortem-99da1233.jpeg" width="80%"></p>
+<p><em>This article may be updated from time to time. <a
+href="https://github.com/one-hundred-proof/one-hundred-proof.github.io/commits/main/kyberswap-post-mortem.html">See
+a complete history here</a></em>.</p>
+<h2 id="prelude">Prelude</h2>
+<blockquote>
+<p>It is not from the benevolence of the butcher, the brewer, or the
+baker, that we expect our dinner, but from their regard to their own
+interest. We address ourselves, not to their humanity but to their
+self-love, and never talk to them of our own necessities but of their
+advantages – Adam Smith, Wealth of Nations</p>
+</blockquote>
+<p>In his foundational work on economics Adam Smith presented the
+concept of the <a
+href="https://www.investopedia.com/terms/i/invisiblehand.asp">invisible
+hand of the market</a>, which is the idea that individuals – all
+following their own selfish desires – can nevertheless contribute to the
+greater good of society.</p>
+<p>So I hope you’ll forgive me if I write this from the selfish
+perspective of someone who dearly wanted to land a bug bounty. Also,
+everyone loves a good heist story even if it only occurs in fiction… or
+is executed in simulation.</p>
+<p>That being said, I’m delighted that the bug I discovered was
+responsibly disclosed, no user funds were lost, and its mitigation and
+re-release of the contracts handled so exceptionally well by the Kyber
+Network team. Working together, a greater good for the Kyber Network
+community has been realised.</p>
+<h2 id="disappointment-and-silver-linings">Disappointment and silver
+linings</h2>
+<p>Earlier this year I found a critical bug in Sushiswap’s unreleased
+Concentrated Liquidity pools. However, rather than use their own code,
+they decided to go with a vanilla fork of Uniswap V3. This fact alone
+would have disappointed me. But the hack itself was so sweet, so epic,
+that the whole experience left me crestfallen. <em>I’ll post details of
+this exploit soon</em>.</p>
+<p>However, there was a “silver lining” to the whole experience: I
+developed a deep knowledge of concentrated liquidity projects. The
+question was, could I leverage this somewhere else? I cast my eyes over
+a few concentrated liquidity projects on Immunefi but – if hadn’t been
+for the fact I didn’t receive a bounty from Sushiswap – I may never have
+searched more widely.</p>
+<p>One day I suddenly remembered a conversation I’d had with a judge
+from Code 4rena about a project he’d once worked on: KyberSwap.</p>
+<p>I don’t know how it was that I wasn’t more aware of them. In their
+own words, they are an established OG DeFi blue chip project that had
+market dominance in 2019. In 2022 they made a comeback in top DEX
+rankings with a new Concentrated Liquidity Market Maker (CLMM) protocol
+(launched in July 2022) called <a
+href="https://docs.kyberswap.com/liquidity-solutions/kyberswap-elastic">Elastic
+Pools</a>. When I first visited their app they had a staggering $125M in
+TVL. From a bounty hunter’s perspective this was a project well worth
+looking into.</p>
+<p>So I took a look at their <code>ks-elastic-sc</code> repo (now <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy">ks-elastic-sc-legacy</a>).</p>
+<h2 id="what-is-a-clmm">What is a CLMM?</h2>
+<p>To get the most out of this post, I’m going to have to teach you a
+little bit about how <em>Concentrated Liquidity Market Makers</em>
+(CLMMs) work.</p>
+<p>In an ordinary AMM any liquidity added to a pool can be utilised by
+traders regardless of the price. In a CLMM, LPs only provide liquidity
+in narrow price bands. The tokens they provide as liquidity will only be
+used if the current price falls within this narrow price range. This has
+a couple of advantages:</p>
+<ul>
+<li>higher liquidity utilization leading to greater <a
+href="https://ethereum.stackexchange.com/questions/141785/why-concentrated-liquidity-is-capital-efficient">capital
+efficiency</a>. This translates to <em>smaller price impact</em> for
+traders.</li>
+<li>LPs can determine the extent of <a
+href="https://www.finder.com.au/impermanent-loss">impermanent loss</a>
+they are willing to bear</li>
+</ul>
+<p>More can be learned about these concepts in the <a
+href="https://docs.kyberswap.com/liquidity-solutions/kyberswap-elastic/concepts/concentrated-liquidity">KyberSwap
+docs</a>, <a
+href="https://docs.uniswap.org/concepts/protocol/concentrated-liquidity">Uniswap
+V3 docs</a> and a <a href="https://arxiv.org/pdf/2110.01368.pdf">paper
+comparing CLMMs vs other AMMs</a>.</p>
+<p>In much the same way that floating point numbers are a discrete
+subdivision of the infinite real number line, in a CLMM the price range
+is discretely subdivided into <em>ticks</em>. These ticks are denoted by
+a number but, for a given tick <span
+class="math inline"><em>t</em></span>, the price at that tick is equal
+to <span class="math inline">1.0001<sup><em>t</em></sup></span>. An LP
+can provide liquidity between two ticks, as long as the two ticks are an
+even multiple of the <em>tick spacing</em>.</p>
+<p>For example, given a tick spacing of <span
+class="math inline">10</span>, an LP could provide a liquidity in the
+price range $1.00 - $1.22 by depositing liquidity in the tick range
+<span class="math inline">(0,2000)</span> (because <span
+class="math inline">1.0001<sup>0</sup> = 1.00</span> and <span
+class="math inline">1.0001<sup>2000</sup> ≈ 1.22</span>).</p>
+<p>I will use the diagram below to illustrate a few concepts of
+CLMMs.</p>
+<p><img src="assets/kyberswap-post-mortem-abe21252.png" width="100%"></p>
+<ul>
+<li><p>The pool consists of two tokens: Token Zero and Token One. The
+current price is not shown but let’s say it’s at tick <span
+class="math inline">250</span>.</p></li>
+<li><p>The diagram represents the depth of liquidity in various tick
+ranges. Three LPs have provided liquidity it different ranges: green in
+the range <span class="math inline">(30,700)</span>, purple in <span
+class="math inline">(100,800)</span> and red in <span
+class="math inline">(300,600)</span>.</p></li>
+<li><p>The depth of liquidity is deepest in the <span
+class="math inline">(300,600)</span> range since all three deposits
+overlap with this range.</p></li>
+<li><p>When an LP deposits liquidity this is known as
+<em>minting</em>.</p>
+<ul>
+<li>If an LP deposits in a tick range that overlaps the current price
+e.g. <span class="math inline">(200,800)</span>, then the current
+liquidity of the pool is increased.</li>
+<li>If the tick range does not overlap the current price, then the
+current liquidity of the pool remains unchanged.</li>
+</ul></li>
+<li><p>a swap by a trader could cause the price to shift enough that a
+tick range boundary is crossed.</p>
+<ul>
+<li>When this happens the swap is subdivided into sub-swaps.</li>
+<li>The current liquidity of the pool is increased/decreased based on
+whether the boundary was a leading or trailing edge of a tick
+range.</li>
+<li>The degree of price impact of each sub-swap, per unit swapped, is
+determined by the liquidity inside the tick range of the sub-swap.</li>
+</ul></li>
+<li><p>For example:</p>
+<ul>
+<li>The price could be sitting at tick <span
+class="math inline">250</span> (<span
+class="math inline"> ≈ $1.025</span>).</li>
+<li>Let’s say 1000 units of Token One are swapped for Token Zero. The
+liquidity is low enough (green + purple) that swapping 300 unit of Token
+One causes the price to shift enough that tick <span
+class="math inline">300</span> is crossed.</li>
+<li>When this happens the current liquidity of the pool increases by the
+red amount.</li>
+<li>However, now we have deeper liquidity and the remaining 700 units
+can be swapped with a smaller price impact for a final tick of, say,
+<span class="math inline">330</span>.</li>
+</ul></li>
+<li><p>there are important invariants that any CLMM should always
+respect</p>
+<ul>
+<li>travelling from left to right on the graph above the liquidity
+should start at zero and increase/decrease on the leading/trailing edges
+of tick ranges.</li>
+<li>The liquidity should never go below zero</li>
+<li>when swapping tick range boundaries should never be crossed without
+liquidity being increased or decreased.</li>
+</ul></li>
+</ul>
+<h2 id="an-outline-of-the-hack">An outline of the hack</h2>
+<h3 id="storage-variables">Storage variables</h3>
+<p>In order to understand the exploit I’m going to have to introduce a
+few fields of the <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/PoolStorage.sol#L73">poolData</a>
+storage variable.</p>
+<ul>
+<li><a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/PoolStorage.sol#L21">sqrtP</a>.
+Internally the current price is represented by the square root of the
+current price multiplied by <span
+class="math inline">2<sup>96</sup></span>. This simplifies a lot of the
+maths. Importantly, the <span
+class="math inline"><em>p</em><em>r</em><em>i</em><em>c</em><em>e</em></span>
+can be between ticks.</li>
+<li><a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/PoolStorage.sol#L25">baseL</a>.
+The current liquidity of the pool, given the current price.</li>
+<li><a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/PoolStorage.sol#L23">currentTick</a>.
+The closest tick to left of the current price. Importantly,
+<code>currentTick</code> might not sit on a valid tick range boundary
+(given various values of the tick spacing
+<code>tickDistance</code>).</li>
+<li><a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/PoolStorage.sol#L22">nearestCurrentTick</a>.
+The closest <em>tick range boundary</em> to the left
+<code>currentTick</code>. Will always be an even multiple of
+<code>tickDistance</code>.</li>
+</ul>
+<h3 id="the-curious-double-life-of-sqrtp-on-tick-range-boundaries">The
+curious double-life of <code>sqrtP</code> on tick range boundaries</h3>
+<p>Given a price one can calculate the nearest tick that corresponds to
+it using <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/libraries/TickMath.sol#L69">TickMath.getTickAtSqrtRatio</a>.</p>
+<p>In general the following system-wide invariant holds:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>poolData<span class="op">.</span><span class="at">currentTick</span> <span class="op">==</span> TickMath<span class="op">.</span><span class="fu">getTickAtSqrtRatio</span>(poolData<span class="op">.</span><span class="at">sqrtP</span>)</span></code></pre></div>
+<p>However, there is one notable exception to this invariant. That is
+when <code>poolData.sqrtP</code> sits right on a tick.
+i.e. <code>poolData.sqrtP</code> is equal to <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/libraries/TickMath.sol#L23">TickMath.getSqrtRatioAtTick(t)</a>
+for some tick <code>t</code>.</p>
+<p>This is desired and expected behaviour but the CLMM needs to be
+<em>very careful</em> about how it handles this case. As you might have
+guessed, the exploit involves this edge case.</p>
+<h3 id="double-adding-liquidity">Double-adding liquidity</h3>
+<p>I found a way to mint liquidity and then have that liquidity added
+again. I’ll call this a <em>double-add</em>.</p>
+<p>The trick was to get the system in a state where
+<code>currentTick</code> was sitting on a valid tick range boundary and
+<code>nearestCurrentTick == currentTick - 1</code>. You then mint
+liquidity in the range <code>(currentTick, currentTick + n)</code> for
+some <code>n</code>. Since the current price, <code>sqrtP</code>, is
+<em>just</em> within the tick range the liquidity is added to the
+<code>baseL</code> storage variable. This is all expected behaviour.</p>
+<p>However a bug manifests itself when you try to do a one-for-zero
+swap. Since <code>nearestCurrentTick == currentTick - 1</code> the next
+tick, <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/Pool.sol#L349">swapData.nextTick</a>
+will be <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/PoolTicksState.sol#L143-L146">calculated</a>
+as <code>currentTick</code>. This is not correct. It should be
+calculated as the next initialised tick range boundary to the right of
+<code>currentTick</code>.</p>
+<p>Since the price is sitting right on the tick range boundary even a
+minimal swap will cross it. This causes the liquidity just added to be
+added again!</p>
+<p>To be more precise: - before minting, crossing the tick boundary
+would have added <code>l0</code> liquidity. - Minting adds
+<code>l1</code> liquidity to <code>poolData.baseL</code> but it also
+adds liquidity to the tick range. This means crossing the tick boundary
+will now add <code>l0 + l1</code> liquidity. - We then cross the tick
+boundary with a small one-for-zero swap. In total,
+<code>l1 + l0 + l1</code> liquidity has been added by minting and
+crossing. This is equal to <code>l0 + 2 * l1</code> so you can easily
+see that <code>l1</code> has been double-added.</p>
+<h2 id="leveraging-the-double-add-for-profit">Leveraging the double-add
+for profit</h2>
+<p>Now that we can double-add liquidity on demand, what can we do with
+it? It might not seem like much but it allows you to almost entirely
+drain the liquidity pool of its tokens. However, this is only feasible
+with very deep pockets… or a flash loan.</p>
+<p>Let me make a quick observation. Although flash loans can be used for
+many legitimate purposes, I find it almost comical that in the <a
+href="https://docs.aave.com/developers/v/1.0/tutorials/performing-a-flash-loan#applications-of-flash-loans">Applictions
+of Flash Loans</a> section of the Aave docs there isn’t a bullet point
+saying “manipulating the price of a DEX in order to unfairly gain from
+trading”. Flash loans have been a crucial part of many hacks,
+transforming them from something only a whale could dream of executing
+to something anyone could execute.</p>
+<p>The exploits proceeds as follows. Using a flash loan, do a large
+zero-for-one swap crossing many tick range boundaries along the way.
+This bids down the price of Token Zero i.e. you can buy a lot of Token
+Zero for relatively little Token One. But lowering the price requires
+swapping <em>a lot</em> of Token Zero.</p>
+<p>You then double-add liquidity. Crucially, you must add enough
+liquidity so that when it is (incorrectly) double-added, there is enough
+liquidity to drain all of Token Zero from the pool. This is done by a
+large one-for-zero swap. Since the price of Token Zero has been bid down
+you end up getting it at a very good price, well below market price.</p>
+<p>This results in a massive profit of Token Zero with which you can
+easily repay the flash loan. Depending on how much you bid down the
+price of Token Zero, you can drain almost all of Token Zero from the
+pool while leaving only a smattering of Token One in the pool.</p>
+<p>Let’s look at a case example involving a hypothetical ETH-USDC pool.
+For simplicity’s sake let’s say the current price of ETH is $2000.</p>
+<ol start="0" type="1">
+<li><p>We start with a pool containing 1000 ETH and 2,000,000
+USDC</p></li>
+<li><p>Using a flash loan we swap 5000 ETH for USDC, getting the price
+down to $1 ( tick 0) There are now 6000 ETH tokens in the pool but
+almost no USDC.</p></li>
+<li><p>We now calculate how much liquidity would need to be in the range
+<span class="math inline">(0,<em>n</em>)</span> for some small <span
+class="math inline"><em>n</em></span> in order to completely drain the
+pool of 6000 ETH (in this narrow tick range).</p></li>
+<li><p>We mint <em>half</em> that liquidity and then perform the
+double-add exploit. Since the price of ETH is $1 this doesn’t require a
+whole lot of ETH and USDC.</p></li>
+<li><p>We now swap (about) 6000 USDC for 6000ETH. There is low price
+impact because the minted liquidity range was so narrow.</p></li>
+<li><p>We now pay back the flash loan and keep approximately 1000 ETH as
+profit as well as the USDC we received in step 1.</p></li>
+</ol>
+<h2 id="a-tiny-bit-more-detail">A tiny bit more detail</h2>
+<p>So, how exactly did I get the <code>sqrtP</code> and
+<code>currentTick</code> to sit right on tick range boundary? And then
+how did I get the system in a state where
+<code>nearestCurrentTick == currentTick - 1</code>?</p>
+<p>Getting <code>sqrtP</code>/<code>currentTick</code> to sit right on a
+tick range boundary was easy using the <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/interfaces/periphery/IRouter.sol#L29">limitSqrtP</a>
+field of the IRouter] interface’s <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/interfaces/periphery/IRouter.sol#L21-L30">ExactInputSingleParams</a>
+struct.</p>
+<p>It was then simply a matter of calling <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/periphery/Router.sol#L72-L89">Router::swapExactInputSingle</a>
+with the correct parameters.</p>
+<p>As for the question of how we got
+<code>nearestCurrentTick == currentTick - 1</code>, that was a little
+bit more tricky. Through trial and error, I found that you could do a
+small one-for-zero swap to cross the tick range boundary, and a small
+zero-for-one backwards. Working out the exact amounts to swap was a
+little bit difficult so I used Foundry’s <a
+href="https://book.getfoundry.sh/cheatcodes/snapshots">snapshot</a>
+cheat codes and a binary search. <!-- TODO: Add link --></p>
+<h2 id="the-root-cause">The root cause</h2>
+<p>When I submitted my Proof of Concept I didn’t actually know the root
+cause of the bug. I’d found that doing a small swap (forwards and
+backwards) put the system in the state required for the double-add
+exploit, but I didn’t know exactly why.</p>
+<p>The Kyber Network team determined that the root cause was this
+snippet of code at <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/Pool.sol#L405-L408">Pool.sol:405-408</a></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">405</span>    <span class="cf">if</span> (swapData<span class="op">.</span><span class="at">sqrtP</span> <span class="op">!=</span> swapData<span class="op">.</span><span class="at">nextSqrtP</span>) {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dv">406</span>      swapData<span class="op">.</span><span class="at">currentTick</span> <span class="op">=</span> TickMath<span class="op">.</span><span class="fu">getTickAtSqrtRatio</span>(swapData<span class="op">.</span><span class="at">sqrtP</span>)<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dv">407</span>      <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dv">408</span>    }</span></code></pre></div>
+<p>It turns out that the swap backwards is actually split into two
+sub-swaps. The first sub-swap crosses the tick range boundary. Then the
+following happens:</p>
+<ul>
+<li>just after crossing the boundary <code>currentTick</code> has the
+correct value (i.e. <code>nearestCurrentTick == currentTick</code>)
+because of line <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/Pool.sol#L409">Pool.sol:409</a></li>
+<li>but then the second sub-swap happens. It is so small that the price,
+<code>swapData.sqrtP</code>, does not change. When <a
+href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/Pool.sol#L407">Pool.sol:407</a>
+is executed this causes the <code>currentTick</code> to be incremented
+by one leading to <code>nearestCurrentTick == currentTick - 1</code>.
+The double-add exploit is now possible.</li>
+</ul>
+<p>The fix for this is quite simple. The code above needs to be amended
+to:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode javascript"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (swapData<span class="op">.</span><span class="at">sqrtP</span> <span class="op">!=</span> swapData<span class="op">.</span><span class="at">nextSqrtP</span>) {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (swapData<span class="op">.</span><span class="at">sqrtP</span> <span class="op">!=</span> swapData<span class="op">.</span><span class="at">startSqrtP</span>) {</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">// update the current tick data in case the sqrtP has changed</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    swapData<span class="op">.</span><span class="at">currentTick</span> <span class="op">=</span> TickMath<span class="op">.</span><span class="fu">getTickAtSqrtRatio</span>(swapData<span class="op">.</span><span class="at">sqrtP</span>)<span class="op">;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">break</span><span class="op">;</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>This has been done in the new <a
+href="https://github.com/KyberNetwork/ks-elastic-sc">ks-elastic-sc</a>
+repo at <a
+href="https://github.com/KyberNetwork/ks-elastic-sc/blob/c39eb431a520b83b731c1d03c9ad5b534ec42728/contracts/Pool.sol#L413-L419">Pool.sol:413-419</a>
+and I have verified that the double-add exploit is no longer
+possible.</p>
+<h2 id="proof-of-concept">Proof of Concept</h2>
+<p>I wrote a Proof of Concept in <a
+href="https://book.getfoundry.sh/">Foundry</a> using a fork of the state
+of the system on Ethereum Mainnet at block height 17050000. The PoC uses
+Aave flash loans to drain most of the tokens from the wstETH-ETH
+pool.</p>
+<p>For now, the repo is private but will be released shortly. Please
+come back to this post for the link in the near future.</p>
+<h2 id="the-aftermath">The aftermath</h2>
+<p>I submitted the bug to Kyber Network via email on 17 April 2023.
+After quickly establishing contact we continued the discussion via <a
+href="https://keybase.io/">Keybase</a>. I disclosed the full details of
+the bug along with the executable PoC.</p>
+<p>The bug was confirmed as valid by 2023-04-17 06:06 UTC. To my delight
+– despite not having a defined bug bounty program – the fine team at
+Kyber Network immediately offered a bug bounty. Given that $100M was
+locked in Kyberswap’s Elastic Pools the potential loss of user funds was
+very close to that figure.</p>
+
+<h3 id="gracefully-handling-the-disclosure">Gracefully handling the
+disclosure</h3>
+<p>What happened next? In my honest opinion, Kyber Network handled the
+situation exceptionally well. The easiest way to prevent the double-add
+exploit was to disable minting of new liquidity positions. However, the
+pools could still be used to swap as per normal.</p>
+<p>Kyber Network then informed its users through all of its public
+channels that LPs should remove their liquidity from the pools before a
+freeze of the Elastic service. It’s worth noting that even though the
+potential attack was completely prevented by disabling minting of new
+liquidity positions, Kyber Network still chose to proactively warn users
+to remove their liquidity as they prepared the new smart contracts for
+Elastic.</p>
+<p>It was a marvel to watch the total liquidity in the pools drop from
+$100M to around $2.5M in less than 48 hours. To ensure the safety of the
+LPs, the Kyber Network team stopped the Liquidity Mining program and
+took a snapshot with full states of the pools and farms so that all
+farmers could receive their full rewards. They also pushed announcements
+across all channels for LPs to withdraw their liquidity from the pools
+as soon as possible.</p>
+<p>And they managed to do this without inducing any kind of panic. As a
+third-party observer it was great to observe their users’ questions
+being promptly and patiently answered on Discord and Twitter.</p>
+<p>As can be clearly seen in the Discord channels, the Elastic pools are
+sorely missed by their users, but Kyber Network have decided, rightly,
+that security must come first. After making the necessary fixes to the
+bug I found, they sent out the codebase for another <a
+href="https://chainsecurity.com/security-audit/kyberswap-elastic/">audit</a>
+with <a href="https://chainsecurity.com">Chain Security</a>.</p>
+<p>The re-release of the Elastic Pools has been delayed until now to
+ensure that the double-add exploit is definitely fixed, and that there
+are no other issues in the codebase. At the same time, Kyber Network has
+been pushing LPs to remove their liquidity before relaunching the
+Elastic protocol and the release of this post-mortem.</p>
+<p>My confidence in Kyber Network’s platform and their security process
+is high enough that I have decided to invest some of my own funds into
+the re-released Elastic pools, and take advantage of their increased
+rewards from <a
+href="https://docs.kyberswap.com/liquidity-solutions/kyberswap-elastic/concepts/tick-based-farming">farming</a>.
+This was partly spurred on by enthusiastic comments by one of their
+users on the Discord channels. Apparently they have made very good
+returns on Kyberswap Elastic because of their competitive APR.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>I will leave you all with an observation on bounty hunting.</p>
+<p>It is certainly possible to be a good bounty hunter by learning a
+<em>broad</em> range of exploits and diligently seeking them out.
+However, it is also possible to go <em>deep</em>, to develop expertise
+in projects that no one else has.</p>
+<p>Bounty hunters are often told that they need to be fast so that they
+are not “beaten to the punch” by others. This is probably true for the
+bounty hunter that has focused on <em>breadth</em>.</p>
+<p>But I’m not sure this is true for those who focus on <em>depth</em>.
+While this bug would eventually have been found, I definitely felt like
+I could take a slightly more leisurely pace while learning about
+concentrated liquidity projects. The path I was taking was a relatively
+untrodden one, so I did not feel like I had to rush. Consequently, I
+developed a deep enough understanding that I was able to uncover
+previously unseen bugs.</p>
+<p>Anon, if this alternative path sounds appealing, it might well be
+worth a try.</p>
+</body>
+</html>
