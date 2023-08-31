@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Thu 31 Aug 2023" />
+  <title>An incredible opportunity to finally prove the value of Formal Methods</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,700">
+  <link rel="stylesheet" href="./css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9E4B6L743K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9E4B6L743K');
+</script>
+<body>
+<header id="title-block-header">
+<h1 class="title">An incredible opportunity to finally prove the value
+of Formal Methods</h1>
+<p class="author">Thu 31 Aug 2023</p>
+</header>
+<p><em>The following post is written as an open letter to formal methods
+researchers, particularly cryptocurrency outsiders.</em></p>
+<hr>
+<p>Dear formal methods researcher,</p>
+<p>I think there is an incredible opportunity for formal methods to
+finally gain widespread adoption in a high stakes environment: DeFi.</p>
+<p>Whether you believe in the goals of cryptocurrency or not – I’m a
+true fence sitter, neither completely for nor against it – the unique
+founding assumptions and incentive structures of the space are almost a
+perfect fit for the use of formal methods.</p>
+<p>Even those who concede that formal methods are useful will cite its
+cost and the time it takes to verify as practically insurmountable
+obstacles to its widespread adoption. And fair enough. This is true
+enough for web and mobile applications.</p>
+<p>However, three things stand out about DeFi projects.</p>
+<ol type="1">
+<li>The on chain code is quite small, often on the order of 2000-3000
+SLOC and very rarely above 10,000 SLOC.</li>
+<li>Bugs are exploited in DeFi “smart contracts” on a remarkable
+frequent basis; several projects a week.</li>
+<li>The economic damage caused by each of these exploits is usually in
+the order of millions of dollars, sometimes the hundreds of millions.
+For a real time list of hacks see <a
+href="https://defillama.com/hacks">DefiLlama’s list of hacks</a></li>
+</ol>
+<p>I’m an ex-Haskeller and have dabbled in Isabelle/HOL and Agda. I’m
+aware of the superb outcomes of the seL4 project. I’m also aware of the
+existence of CompCert and some other work out of INRIA. From the moment
+I heard that Ethereum smart contracts <a href="#fn1"
+class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>
+would be programmed in a Turing Complete language I knew that bugs were
+going to be an issue.</p>
+<p>What’s so fascinating about Ethereum is that even the designers and
+core developers seem to be largely unaware of much of the progress that
+has been made in formally verifying systems or even designing systems in
+a principled manner (so that certain classes of bugs are avoided
+altogether). What’s even more disappointing is that Cardano, a project
+written in Haskell and with a System F like core language (Plutus) seems
+similarly plagued by exploits that could be removed entirely with
+sufficient formal verification.</p>
+<p>The consensus in the web3 community is that auditing and bug bounties
+will be enough to secure web3. To say I am highly skeptical of this
+position is an understatement. I’m convinced that many projects are so
+complex that there is no way all the bugs can be found through informal
+processes.</p>
+<p>To that end, I put some skin the game and became an auditor and,
+later, a bounty hunter. I learned the basics by doing competitive
+auditing on a platform called <a href="https://code4rena.com">Code
+Arena</a> and then moved to <a href="https://immunefi.com">Immunefi</a>
+to find projects with bug bounties. A cursory glance will show you that
+many of those bounties are very substantial.</p>
+<p>My original suspicion was proven true. Using purely informal
+techniques – with a dash of property based testing – I’ve been able to
+land two large bug bounties. The exploits I responsibly disclosed
+prevented $1.5M in economic damage to <a
+href="https://notional.finance">Notional Finance</a> and $100M in
+economic damage to <a href="https://kyberswap.com">KyberSwap</a>.</p>
+<p>And yet, even though it might seem I’m onto a good thing and should
+continue down this lucrative career path, I feel <em>this is formal
+methods time to shine</em>. And I believe a increasing number of people
+in the DeFi community are receptive. If several multi-million dollar
+hacks every week are not enough to convince people of this, I can’t
+imagine what will.</p>
+<p>One of the core tenets of DeFi is that users should be able to read
+the source code of the financial instruments that they are using.
+However, this means that potential attackers have unfettered access to
+their inner workings. Fortunately, so do auditors and bounty hunters and
+so many potential attacks are prevented. However, as stated above, there
+are still many hacks every week. Auditing and bounty hunting do not seem
+sufficient.</p>
+<p>I feel this is due to the shortcomings of informal auditing
+processes. Not only that, formal verification is required on the tooling
+as well. Just this week a project got hacked because of a compiler bug.
+Reading the source code of the project, alone, could not have discovered
+the bug.</p>
+<p>People in DeFi are coming to the realisation that unless the
+correctness issue can be solved DeFi will never succeed. And there are
+still many true believers in DeFi! Sure, you might be getting a 20%
+return from a particular project but does that matter if there’s a 50%
+chance per annum that you lose all your money? Here are <a
+href="https://twitter.com/sjkelleyjr/status/1686844424335306752">some</a>
+<a
+href="https://twitter.com/0xOwenThurm/status/1686202793336455169">tweets</a>
+<a
+href="https://twitter.com/sjkelleyjr/status/1686371854041399296">that</a>
+<a
+href="https://twitter.com/andyfeili/status/1696306189615919397">express</a>
+this sentiment.</p>
+<p>If you’re a cryptocurrency outsider, I understand that you might have
+reservations about it. Equally, you may not. In any case, it doesn’t
+matter for the purposes of showing that formal methods could work.</p>
+<p>If the results of <a
+href="https://royalsocietypublishing.org/doi/full/10.1098/rsta.2015.0401">HACMS</a>
+can be replicated, if smart contracts can be written that don’t get
+hacked in the highly adversarial <a
+href="https://medium.com/@danrobinson/ethereum-is-a-dark-forest-ecc5f0505dff">dark
+forest</a> of DeFi then it will truly have proved its mettle.
+Personally, I can’t think of a better test-bed for proving its
+effectiveness.</p>
+<p>if you’ve read this far dear formal methods researcher I’d be very
+interested your thoughts on this matter and whether you’d like to get
+involved in one way or another. Please contact me at security
+<em>shift-2</em> 100proof <em>symbol-to-the-right-of-comma</em> org.</p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>programs that “run on” the blockchain and handle
+cryptocurrency natively<a href="#fnref1" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
