@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Wed 13 Sep 2023" />
+  <title>How to craft a regular expression</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,700">
+  <link rel="stylesheet" href="./css/style.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9E4B6L743K"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9E4B6L743K');
+</script>
+<body>
+<header id="title-block-header">
+<h1 class="title">How to craft a regular expression</h1>
+<p class="author">Wed 13 Sep 2023</p>
+</header>
+<h2 id="the-problem">The problem</h2>
+<p>Picture this. You’re searching a large amount of code for some kind
+of statement/expression that has a pretty non-specific form. Obviously,
+the best option would be to use some kind of matching tool that knows
+about the grammar/syntax of the programming language that the code is
+written in.</p>
+<p>But we aren’t always lucky enough to have such a tool at hand, or
+maybe we’re searching through many code bases each with their own
+idiosyncratic build systems.</p>
+<p>So we fall back on <a
+href="https://en.wikipedia.org/wiki/Regular_expression">regular
+expressions</a> and our favourite unix tools e.g. <code>grep</code> or
+<code>rg</code>/<code>ripgrep</code>.</p>
+<p>Now it well known, in general, that programming languages can’t be
+parsed using regular expressions (and if you do you’re liable to <a
+href="https://stackoverflow.com/questions/1732348/regex-match-open-tags-except-xhtml-self-contained-tags">summon
+unholy Eldrich beings</a>). So you can’t hope to match every case of
+<em>some</em> general syntactic forms. But what if you don’t care about
+100% accuracy and you just want to do a “good enough” job?</p>
+<p>Then by all means use a regular expression!</p>
+<h2 id="making-sure-it-matches">Making sure it matches</h2>
+<p>The problem is that, if the code base is big enough, you’re just
+going to miss a lot. But you want to get the percentage of what you miss
+down to less than, say, 1%.</p>
+<ul>
+<li>Create a special text file that you’ll place all the weird examples
+in.</li>
+<li>Learn about all the weird examples by doing more <em>general</em>
+regular expression searches and carefully observation.</li>
+<li>Add the weird examples to the text file.</li>
+<li>Change them up a bit. If the programming language allows it do
+things like
+<ul>
+<li>adding white space</li>
+<li>putting brackets around sub-expressions</li>
+<li>use weird identifiers containing special characters Then make sure
+your regex matches these weird examples.</li>
+</ul></li>
+</ul>
+</body>
+</html>
