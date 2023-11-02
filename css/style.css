@@ -72,3 +72,7 @@ a:link {
 a:visited {
   color: #3070a0;
 }
+
+.katex{
+  font-size: 1em;
+}

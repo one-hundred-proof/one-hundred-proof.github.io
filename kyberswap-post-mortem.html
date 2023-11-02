@@ -79,6 +79,7 @@
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400;1,700">
+  <link rel="stylesheet" href="./css/katex.min.css" />
   <link rel="stylesheet" href="./css/style.css" />
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -179,38 +180,45 @@ comparing CLMMs vs other AMMs</a>.</p>
 <p>In much the same way that floating point numbers are a discrete
 subdivision of the infinite real number line, in a CLMM the price range
 is discretely subdivided into <em>ticks</em>. These ticks are denoted by
-a number but, for a given tick <span
-class="math inline"><em>t</em></span>, the price at that tick is equal
-to <span class="math inline">1.0001<sup><em>t</em></sup></span>. An LP
-can provide liquidity between two ticks, as long as the two ticks are an
-even multiple of the <em>tick spacing</em>.</p>
-<p>For example, given a tick spacing of <span
-class="math inline">10</span>, an LP could provide a liquidity in the
-price range $1.00 - $1.22 by depositing liquidity in the tick range
-<span class="math inline">(0,2000)</span> (because <span
-class="math inline">1.0001<sup>0</sup> = 1.00</span> and <span
-class="math inline">1.0001<sup>2000</sup> ≈ 1.22</span>).</p>
+a number but, for a given tick
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi></mrow><annotation encoding="application/x-tex">t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em;"></span><span class="mord mathnormal">t</span></span></span></span>,
+the price at that tick is equal to
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.000</mn><msup><mn>1</mn><mi>t</mi></msup></mrow><annotation encoding="application/x-tex">1.0001^{t}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7936em;"></span><span class="mord">1.000</span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7936em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">t</span></span></span></span></span></span></span></span></span></span></span></span>.
+An LP can provide liquidity between two ticks, as long as the two ticks
+are an even multiple of the <em>tick spacing</em>.</p>
+<p>For example, given a tick spacing of
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">10</span></span></span></span>,
+an LP could provide a liquidity in the price range $1.00 - $1.22 by
+depositing liquidity in the tick range
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>2000</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 2000)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">2000</span><span class="mclose">)</span></span></span></span>
+(because
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.000</mn><msup><mn>1</mn><mn>0</mn></msup><mo>=</mo><mn>1.00</mn></mrow><annotation encoding="application/x-tex">1.0001^0 = 1.00</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1.000</span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.00</span></span></span></span>
+and
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.000</mn><msup><mn>1</mn><mn>2000</mn></msup><mo>≈</mo><mn>1.22</mn></mrow><annotation encoding="application/x-tex">1.0001^{2000} \approx 1.22</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord">1.000</span><span class="mord"><span class="mord">1</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2000</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">1.22</span></span></span></span>).</p>
 <p>I will use the diagram below to illustrate a few concepts of
 CLMMs.</p>
 <p><img src="assets/kyberswap-post-mortem-abe21252.png" width="100%"></p>
 <ul>
 <li><p>The pool consists of two tokens: Token Zero and Token One. The
-current price is not shown but let’s say it’s at tick <span
-class="math inline">250</span>.</p></li>
+current price is not shown but let’s say it’s at tick
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>250</mn></mrow><annotation encoding="application/x-tex">250</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">250</span></span></span></span>.</p></li>
 <li><p>The diagram represents the depth of liquidity in various tick
 ranges. Three LPs have provided liquidity it different ranges: green in
-the range <span class="math inline">(30,700)</span>, purple in <span
-class="math inline">(100,800)</span> and red in <span
-class="math inline">(300,600)</span>.</p></li>
-<li><p>The depth of liquidity is deepest in the <span
-class="math inline">(300,600)</span> range since all three deposits
-overlap with this range.</p></li>
+the range
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>30</mn><mo separator="true">,</mo><mn>700</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(30, 700)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">30</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">700</span><span class="mclose">)</span></span></span></span>,
+purple in
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>100</mn><mo separator="true">,</mo><mn>800</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(100, 800)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">100</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">800</span><span class="mclose">)</span></span></span></span>
+and red in
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>300</mn><mo separator="true">,</mo><mn>600</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(300, 600)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">300</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">600</span><span class="mclose">)</span></span></span></span>.</p></li>
+<li><p>The depth of liquidity is deepest in the
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>300</mn><mo separator="true">,</mo><mn>600</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(300, 600)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">300</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">600</span><span class="mclose">)</span></span></span></span>
+range since all three deposits overlap with this range.</p></li>
 <li><p>When an LP deposits liquidity this is known as
 <em>minting</em>.</p>
 <ul>
 <li>If an LP deposits in a tick range that overlaps the current price
-e.g. <span class="math inline">(200,800)</span>, then the current
-liquidity of the pool is increased.</li>
+e.g. <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>200</mn><mo separator="true">,</mo><mn>800</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(200, 800)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">200</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">800</span><span class="mclose">)</span></span></span></span>,
+then the current liquidity of the pool is increased.</li>
 <li>If the tick range does not overlap the current price, then the
 current liquidity of the pool remains unchanged.</li>
 </ul></li>
@@ -226,18 +234,19 @@ determined by the liquidity inside the tick range of the sub-swap.</li>
 </ul></li>
 <li><p>For example:</p>
 <ul>
-<li>The price could be sitting at tick <span
-class="math inline">250</span> (<span
-class="math inline"> ≈ $1.025</span>).</li>
+<li>The price could be sitting at tick
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>250</mn></mrow><annotation encoding="application/x-tex">250</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">250</span></span></span></span>
+(<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mi mathvariant="normal">$</mi><mn>1.025</mn></mrow><annotation encoding="application/x-tex">\approx \$1.025</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4831em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8056em;vertical-align:-0.0556em;"></span><span class="mord">$1.025</span></span></span></span>).</li>
 <li>Let’s say 1000 units of Token One are swapped for Token Zero. The
 liquidity is low enough (green + purple) that swapping 300 unit of Token
-One causes the price to shift enough that tick <span
-class="math inline">300</span> is crossed.</li>
+One causes the price to shift enough that tick
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>300</mn></mrow><annotation encoding="application/x-tex">300</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">300</span></span></span></span>
+is crossed.</li>
 <li>When this happens the current liquidity of the pool increases by the
 red amount.</li>
 <li>However, now we have deeper liquidity and the remaining 700 units
 can be swapped with a smaller price impact for a final tick of, say,
-<span class="math inline">330</span>.</li>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>330</mn></mrow><annotation encoding="application/x-tex">330</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">330</span></span></span></span>.</li>
 </ul></li>
 <li><p>there are important invariants that any CLMM should always
 respect</p>
@@ -260,10 +269,10 @@ storage variable.</p>
 <li><a
 href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/PoolStorage.sol#L21">sqrtP</a>.
 Internally the current price is represented by the square root of the
-current price multiplied by <span
-class="math inline">2<sup>96</sup></span>. This simplifies a lot of the
-maths. Importantly, the <span
-class="math inline"><em>p</em><em>r</em><em>i</em><em>c</em><em>e</em></span>
+current price multiplied by
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mn>96</mn></msup></mrow><annotation encoding="application/x-tex">2^{96}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em;"></span><span class="mord"><span class="mord">2</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">96</span></span></span></span></span></span></span></span></span></span></span></span>.
+This simplifies a lot of the maths. Importantly, the
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mi>r</mi><mi>i</mi><mi>c</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">price</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.854em;vertical-align:-0.1944em;"></span><span class="mord mathnormal">p</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">i</span><span class="mord mathnormal">ce</span></span></span></span>
 can be between ticks.</li>
 <li><a
 href="https://github.com/KyberNetwork/ks-elastic-sc-legacy/blob/362d9b6a726bcb286cc47c082c46f6259a5ae82d/contracts/PoolStorage.sol#L25">baseL</a>.
@@ -364,9 +373,11 @@ USDC</p></li>
 down to $1 ( tick 0) There are now 6000 ETH tokens in the pool but
 almost no USDC.</p></li>
 <li><p>We now calculate how much liquidity would need to be in the range
-<span class="math inline">(0,<em>n</em>)</span> for some small <span
-class="math inline"><em>n</em></span> in order to completely drain the
-pool of 6000 ETH (in this narrow tick range).</p></li>
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span>
+for some small
+<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span>
+in order to completely drain the pool of 6000 ETH (in this narrow tick
+range).</p></li>
 <li><p>We mint <em>half</em> that liquidity and then perform the
 double-add exploit. Since the price of ETH is $1 this doesn’t require a
 whole lot of ETH and USDC.</p></li>
